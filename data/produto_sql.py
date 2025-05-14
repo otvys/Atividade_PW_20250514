@@ -7,7 +7,7 @@ preco REAL NOT NULL,
 quantidade INTEGER NOT NULL)
 """
 
-INSERIR_PRODUTO = """
+INSERIR = """
 INSERT INTO produto (nome, descricao, preco, quantidade) 
 VALUES (?, ?, ?, ?)
 """
@@ -16,4 +16,5 @@ OBTER_TODOS = """
 SELECT 
 id, nome, descricao, preco, quantidade 
 FROM produto
+ORDER BY nome
 """ 

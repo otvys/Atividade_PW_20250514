@@ -1,5 +1,5 @@
-from data.produto_model import Produto
-from data.produto_sql import *
+from data.cliente_model import Cliente
+from data.cliente_sql import *
 from data.util import get_connection
 
 def criar_tabela():
@@ -9,29 +9,31 @@ def criar_tabela():
     conn.commit()
     conn.close()
 
-def inserir(produto: Produto):
+def inserir(cliente: Cliente):
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute(INSERIR, (
-        produto.nome, 
-        produto.descricao, 
-        produto.preco, 
-        produto.quantidade))
+        cliente.nome, 
+        cliente.cpf, 
+        cliente.email, 
+        cliente.telefone, 
+        cliente.senha))
     conn.commit()
     conn.close()
 
-def obter_todos() -> list[Produto]:
+def obter_todos() -> list[Cliente]:
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute(OBTER_TODOS)
     tuplas = cursor.fetchall()
-    produtos = [
-        Produto(
+    clientes = [
+        Cliente(
             id=tupla[0], 
             nome=tupla[1], 
-            descricao=tupla[2], 
-            preco=tupla[3], 
-            quantidade=tupla[4]) 
+            cpf=tupla[2],
+            email=tupla[3],
+            telefone=tupla[4],
+            senha=tupla[5]) 
             for tupla in tuplas]
     conn.close()
-    return produtos
+    return clientes
