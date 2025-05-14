@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <title>Loja Virtual</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header class="text-bg-dark p-3">
+        <div class="container">
+            <h1>Loja Virtual</h1>
+        </div>
+    </header>
+    <main class="container my-3">
+        <h1>Categorias</h1>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                </tr>
+            </thead>
+            <tbody> 
+                {% for categoria in categorias %}
+                <tr>
+                    <td>{{categoria.id}}</td>
+                    <td>{{categoria.nome}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer class="text-bg-dark p-3 text-center mt-auto">
+        <p class="m-0">Copyright &copy; 2025 Loja Virtual</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
